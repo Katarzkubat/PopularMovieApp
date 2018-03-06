@@ -13,7 +13,7 @@
     <string name="vote_count">Num</string>
     <string name="popularity_label">Movie Popularity</string>
     <string name="popularity_number">Popularity Rate</string>
-    <string name="api_key">000</string>
+    <string name="api_key"></string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
