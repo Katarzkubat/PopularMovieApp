@@ -12,6 +12,9 @@ public class Reviews implements Parcelable {
     String author = "";
     String content = "";
 
+    public Reviews() {
+    }
+
     public Reviews(String author, String content) {
 
         this.author = author;

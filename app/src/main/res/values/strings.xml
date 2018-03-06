@@ -35,4 +35,6 @@
     <string name="textview">TextView</string>
     <string name="review_title">Review Title</string>
     <string name="movie_description">Movie description</string>
+    <string name="title_activity_reviews">Review</string>
+    <string name="noreview_toast">Sorry, this movie has no review :)</string>
 </resources>

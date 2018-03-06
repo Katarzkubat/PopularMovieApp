@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.katarzkubat.popularmoviesapp.Model.Movies;
 import com.example.katarzkubat.popularmoviesapp.Model.Reviews;
@@ -43,7 +44,6 @@ public class DetailActivity extends AppCompatActivity {
         TextView voteCount = findViewById(R.id.voteCount);
 
         ImageButton favoriteBtn = findViewById(R.id.addToFavorite);
-        Button seeReview = findViewById(R.id.seeReviewBtn);
 
         Intent takeMovieObject = getIntent();
         final Movies singleMovieDetail = takeMovieObject.getParcelableExtra(OBJECT_NAME);
@@ -83,6 +83,22 @@ public class DetailActivity extends AppCompatActivity {
 
         new PopulateReviews().execute(getResources().getString(R.string.api_key),
                 Integer.toString(singleMovieDetail.getId()));
+
+
+        Button seeReview = findViewById(R.id.seeReviewBtn);
+        seeReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openReview();
+            }
+        });
+    }
+
+    private void openReview() {
+        Reviews reviews = new Reviews();
+        Intent intent = new Intent(DetailActivity.this, ReviewsActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, reviews.getContent());
+        startActivity(intent);
     }
 
     private class PopulateReviews extends AsyncTask<String, Void, ArrayList<Reviews>> {
@@ -91,6 +107,7 @@ public class DetailActivity extends AppCompatActivity {
         protected ArrayList<Reviews> doInBackground(String... strings) {
 
             URL reviewRequestUrl = NetworkUtils.buildReviewUrl(strings[0], strings[1]);
+            Log.d("POPULATEREVIEWREQUEST", reviewRequestUrl.toString());
 
             try {
 
@@ -106,9 +123,14 @@ public class DetailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<Reviews> reviews) {
-
+            storeReviews(reviews);
         }
     }
+
+    private void storeReviews(ArrayList<Reviews> reviews) {
+        Log.d("STOREREVIEWS", "sprawdzamy");
+    }
+
 
     //SOMETHING WRONG HAPPENS HERE :)
 

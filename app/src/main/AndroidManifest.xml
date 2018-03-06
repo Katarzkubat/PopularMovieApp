@@ -15,13 +15,14 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"/>
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -35,8 +36,11 @@
             android:name=".FavoriteActivity"
             android:label="@string/title_activity_favorite"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Utilities.ReviewsActivity" />
-        <activity android:name=".ReviewsActivity"></activity>
+
+        <activity android:name=".ReviewsActivity"
+            android:parentActivityName=".DetailActivity"
+            android:label="@string/title_activity_reviews"/>
+
     </application>
 
 </manifest>
