@@ -81,11 +81,11 @@ public class DetailActivity extends AppCompatActivity {
         new PopulateTrailers().execute(getResources().getString(R.string.api_key),
                 Integer.toString(singleMovieDetail.getId()));
 
-       // new PopulateReviews().execute(getResources().getString(R.string.api_key),
-       //         Integer.toString(singleMovieDetail.getId()));
+        new PopulateReviews().execute(getResources().getString(R.string.api_key),
+                Integer.toString(singleMovieDetail.getId()));
     }
 
-   /* private class PopulateReviews extends AsyncTask<String, Void, ArrayList<Reviews>> {
+    private class PopulateReviews extends AsyncTask<String, Void, ArrayList<Reviews>> {
 
         @Override
         protected ArrayList<Reviews> doInBackground(String... strings) {
@@ -108,7 +108,7 @@ public class DetailActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Reviews> reviews) {
 
         }
-    } */
+    }
 
     //SOMETHING WRONG HAPPENS HERE :)
 
@@ -160,11 +160,11 @@ public class DetailActivity extends AppCompatActivity {
     private void openTrailer(String trailerUri) {
         Log.d("OTWIERAJSIE", trailerUri);
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUri));
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            }
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUri));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
         }
+    }
 }
 
 
