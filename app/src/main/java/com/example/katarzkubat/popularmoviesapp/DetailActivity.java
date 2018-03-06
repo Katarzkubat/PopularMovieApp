@@ -101,7 +101,7 @@ public class DetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class PopulateReviews extends AsyncTask<String, Void, ArrayList<Reviews>> {
+    private static class PopulateReviews extends AsyncTask<String, Void, ArrayList<Reviews>> {
 
         @Override
         protected ArrayList<Reviews> doInBackground(String... strings) {
@@ -123,12 +123,8 @@ public class DetailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<Reviews> reviews) {
-            storeReviews(reviews);
-        }
-    }
 
-    private void storeReviews(ArrayList<Reviews> reviews) {
-        Log.d("STOREREVIEWS", "sprawdzamy");
+        }
     }
 
 
