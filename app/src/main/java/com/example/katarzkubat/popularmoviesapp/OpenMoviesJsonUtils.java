@@ -1,7 +1,5 @@
 package com.example.katarzkubat.popularmoviesapp;
 
-import android.util.Log;
-
 import com.example.katarzkubat.popularmoviesapp.Model.Movies;
 
 import org.json.JSONArray;
@@ -10,7 +8,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-class OpenMoviesJsonUtils {
+public class OpenMoviesJsonUtils {
 
     private static final String RESULTS = "results";
     private static final String VOTE_COUNT = "vote_count";
@@ -84,7 +82,6 @@ class OpenMoviesJsonUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return moviesArrayList;
     }
 }

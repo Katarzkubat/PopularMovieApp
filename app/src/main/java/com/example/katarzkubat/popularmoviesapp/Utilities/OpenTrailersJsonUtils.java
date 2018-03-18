@@ -18,7 +18,7 @@ public class OpenTrailersJsonUtils {
 
     public static ArrayList<Trailers> getTrailersFromJson(String jsonTrailers) {
 
-        ArrayList<Trailers> trailerArrayList = new ArrayList<Trailers>();
+        ArrayList<Trailers> trailerArrayList = new ArrayList<>();
         String trailerTitle = "";
         String trailerPath = "";
         String trailerSite = "";
@@ -31,26 +31,26 @@ public class OpenTrailersJsonUtils {
                 JSONArray results = jsonObject.getJSONArray(RESULTS);
                 Log.d("TRAILERSJSONOBJECT", String.valueOf(results));
 
-                    for (int i = 0; i < results.length(); i++) {
+                for (int i = 0; i < results.length(); i++) {
 
-                        JSONObject trailer = results.getJSONObject(i);
+                    JSONObject item = results.getJSONObject(i);
 
-                        if (trailer.has(TRAILER_TITLE)) {
-                            trailerTitle = trailer.optString(TRAILER_TITLE);
-                        }
-
-                        if (trailer.has(TRAILER_PATH)) {
-                            trailerPath = trailer.optString(TRAILER_PATH);
-                        }
-
-                        if (trailer.has(TRAILER_URI)) {
-                            trailerSite = trailer.optString(TRAILER_URI);
-                        }
+                    if (item.has(TRAILER_TITLE)) {
+                        trailerTitle = item.optString(TRAILER_TITLE);
                     }
 
-                    Trailers trailer = new Trailers(trailerTitle, trailerSite,trailerPath);
-                    trailerArrayList.add(trailer);
-               }
+                    if (item.has(TRAILER_PATH)) {
+                        trailerPath = item.optString(TRAILER_PATH);
+                    }
+
+                    if (item.has(TRAILER_URI)) {
+                        trailerSite = item.optString(TRAILER_URI);
+                   }
+
+                Trailers trailer = new Trailers(trailerSite, trailerTitle, trailerPath);
+                trailerArrayList.add(trailer);
+            }
+        }
 
     } catch (JSONException e) {
             e.printStackTrace();

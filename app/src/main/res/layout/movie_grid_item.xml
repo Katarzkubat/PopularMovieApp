@@ -7,11 +7,13 @@
 
     <ImageView
         android:id="@+id/movie_grid_item"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="220dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/image_grid_description"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
+        android:cropToPadding="true"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
         android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"

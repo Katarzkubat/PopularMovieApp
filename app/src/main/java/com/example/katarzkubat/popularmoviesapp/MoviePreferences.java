@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceManager;
 
-class MoviePreferences {
+public class MoviePreferences {
 
     public static String getChosenPreferences(Context context) {
 

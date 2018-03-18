@@ -1,7 +1,8 @@
-package com.example.katarzkubat.popularmoviesapp.Utilities;
+package com.example.katarzkubat.popularmoviesapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 
 import com.example.katarzkubat.popularmoviesapp.Model.Movies;
 import com.example.katarzkubat.popularmoviesapp.R;
+import com.example.katarzkubat.popularmoviesapp.Utilities.MovieClicker;
+import com.example.katarzkubat.popularmoviesapp.Utilities.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,12 +29,9 @@ public class MoviePosterAdapter extends RecyclerView.Adapter<MoviePosterAdapter.
 
     @Override
     public MovieAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        int layoutIdGridItem = R.layout.movie_grid_item;
-        boolean attachToParent = false;
 
-        View view = inflater.inflate(layoutIdGridItem, parent, false);
+        Context context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.movie_grid_item, parent, false);
         return new MovieAdapterViewHolder(view);
     }
 
@@ -44,6 +44,7 @@ public class MoviePosterAdapter extends RecyclerView.Adapter<MoviePosterAdapter.
 
     @Override
     public int getItemCount() {
+        Log.d("trailersMOVIE", "movie get sie");
         if (null == movies) {
             return 0;
         }

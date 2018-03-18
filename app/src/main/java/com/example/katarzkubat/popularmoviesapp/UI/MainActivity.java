@@ -1,28 +1,27 @@
-package com.example.katarzkubat.popularmoviesapp;
+package com.example.katarzkubat.popularmoviesapp.UI;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.katarzkubat.popularmoviesapp.Adapters.MoviePosterAdapter;
 import com.example.katarzkubat.popularmoviesapp.Model.Movies;
+import com.example.katarzkubat.popularmoviesapp.MoviePreferences;
+import com.example.katarzkubat.popularmoviesapp.OpenMoviesJsonUtils;
+import com.example.katarzkubat.popularmoviesapp.R;
 import com.example.katarzkubat.popularmoviesapp.Utilities.MovieClicker;
-import com.example.katarzkubat.popularmoviesapp.Utilities.MoviePosterAdapter;
 import com.example.katarzkubat.popularmoviesapp.Utilities.NetworkUtils;
 
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MovieClicker,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends AppCompatActivity implements MovieClicker {
 
     public static final String OBJECT_NAME = "movies";
 
@@ -45,21 +44,12 @@ public class MainActivity extends AppCompatActivity implements MovieClicker,
         movieAdapter = new MoviePosterAdapter(this, this);
 
         recyclerView.setAdapter(movieAdapter);
-        new PopulateMovies().execute(getResources().getString(R.string.api_key));
-
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .registerOnSharedPreferenceChangeListener(this);
     }
 
     public void onClick(Movies singleMovie) {
         Intent openDetail = new Intent(this, DetailActivity.class);
         openDetail.putExtra(OBJECT_NAME, singleMovie);
         startActivity(openDetail);
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
     }
 
     private class PopulateMovies extends AsyncTask<String, Void, ArrayList<Movies>> {
@@ -100,16 +90,14 @@ public class MainActivity extends AppCompatActivity implements MovieClicker,
     @Override
     protected void onResume() {
         super.onResume();
-        new PopulateMovies().execute(getResources().getString(R.string.api_key));
 
+        new PopulateMovies().execute(getResources().getString(R.string.api_key));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -128,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements MovieClicker,
             return true;
         }
 
-        if(id == R.id.favorite) {
+        if (id == R.id.favorite) {
             Intent favoriteActivity = new Intent(MainActivity.this, FavoriteActivity.class);
             startActivity(favoriteActivity);
             return true;
@@ -136,4 +124,3 @@ public class MainActivity extends AppCompatActivity implements MovieClicker,
         return super.onOptionsItemSelected(item);
     }
 }
-

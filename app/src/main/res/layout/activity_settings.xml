@@ -3,5 +3,5 @@
     android:id="@+id/settings_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.example.katarzkubat.popularmoviesapp.Utilities.SettingsFragment">
+    android:name="com.example.katarzkubat.popularmoviesapp.UI.SettingsFragment">
 </fragment>

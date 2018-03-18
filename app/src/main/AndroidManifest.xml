@@ -11,35 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity"
-            android:launchMode="singleTop"/>
-
+            android:name=".UI.DetailActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".UI.MainActivity" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".UI.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".UI.MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            android:value=".UI.MainActivity" />
 
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".UI.FavoriteActivity"
             android:label="@string/title_activity_favorite"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".UI.MainActivity" />
 
-        <activity android:name=".ReviewsActivity"
-            android:parentActivityName=".DetailActivity"
-            android:label="@string/title_activity_reviews"/>
+        <provider
+            android:name=".Data.MoviesContentProvider"
+            android:authorities="com.example.katarzkubat.popularmoviesapp"
+            android:exported="false" />
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.katarzkubat.popularmoviesapp.Utilities;
+package com.example.katarzkubat.popularmoviesapp.UI;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

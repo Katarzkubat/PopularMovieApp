@@ -14,7 +14,6 @@ public class Movies implements Parcelable {
     private final double moviePopularity;
     private final int voteAverage;
 
-
     public Movies(int id, String movieTitle, String moviePoster, String plotDescription,
                   String releaseDate, int voteCount, double moviePopularity, int voteAverage) {
 

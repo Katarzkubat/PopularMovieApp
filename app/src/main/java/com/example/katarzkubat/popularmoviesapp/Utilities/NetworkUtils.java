@@ -1,10 +1,6 @@
 package com.example.katarzkubat.popularmoviesapp.Utilities;
 
 import android.net.Uri;
-import android.util.Log;
-
-import com.example.katarzkubat.popularmoviesapp.Model.Trailers;
-import com.example.katarzkubat.popularmoviesapp.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +16,8 @@ public class NetworkUtils {
     private final static String MOVIE_URL = "http://api.themoviedb.org/3/movie/";
     private final static String TRAILER_PATH = "videos";
     private final static String REVIEW_PATH = "reviews";
-    private final static String MOVIE_ID = "id";
+    private final static String TRAILER_KEY = "v";
+    private final static String TRAILER_URL = "https://www.youtube.com/watch";
 
     public static URL buildMovieUrl(String secretKey, String preference) {
 
@@ -75,10 +72,10 @@ public class NetworkUtils {
         return reviewUrl;
     }
 
-    public static String getTrailerUrl(String trailerSite, String trailerPath) {
+    public static String getTrailerUrl(String trailerPath) {
 
-        Uri builtTrailerUri = Uri.parse(trailerSite).buildUpon()
-                .appendPath(trailerPath).build();
+        Uri builtTrailerUri = Uri.parse(TRAILER_URL).buildUpon()
+                .appendQueryParameter(TRAILER_KEY, trailerPath).build();
         return builtTrailerUri.toString();
     }
 
@@ -108,6 +105,4 @@ public class NetworkUtils {
                 .build();
         return builtImageUri.toString();
     }
-
-
 }
